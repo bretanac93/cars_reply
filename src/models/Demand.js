@@ -1,18 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const CarSchema = new Schema({
-    brand: String,
-    model: String,
-    engine: String,
-    interior_design: String,
-    infotainment_system: String,
-    location: {
+const DemandSchema = new Schema({
+    pickup_date: Date,
+    dropoff_date: Date,
+    pickup_location: {
         latitude: Number,
         longitude: Number
     },
-    minute_price: Number,
-    picture: String
+    dropoff_location: {
+        latitude: Number,
+        longitude: Number
+    },
+    user: { type: Schema.ObjectId, ref: 'UserSchema' },
+    car: { type: Schema.ObjectId, ref: 'CarSchema' },
 });
 
-module.exports = mongoose.model('Car', CarSchema);
+module.exports = mongoose.model('Demand', DemandSchema);

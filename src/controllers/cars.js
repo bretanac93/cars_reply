@@ -20,7 +20,33 @@ exports.getById = (req, res) => {
 }
 
 exports.save = (req, res) => {
-    res.send('Not implemented');
+    const {
+        brand,
+        model,
+        engine,
+        infotainment_system,
+        interior_design,
+        location,
+        minute_price
+    } = req.body;
+
+    let car = new Car({
+        brand,
+        model,
+        engine,
+        infotainment_system,
+        interior_design,
+        location,
+        minute_price,
+        picture: 'https://picsum.photos/300/300?image=0'
+    });
+
+    car.save((err, data) => {
+        if (err)
+            res.status(400);
+        
+        res.json({ data });
+    })
 }
 
 exports.update = (req, res) => {

@@ -1,7 +1,7 @@
-let Car = require('../models/Car');
+let User = require('../models/User');
 
 exports.getAll = (req, res) => {
-    Car.find((err, data) => {
+    User.find((err, data) => {
         if (err)
             res.status(400);
         res.json({ data });
@@ -9,7 +9,7 @@ exports.getAll = (req, res) => {
 };
 
 exports.getById = (req, res) => {
-    Car.findById(req.params.id, (err, data) => {
+    User.findById(req.params.id, (err, data) => {
         if (err)
             res.status(400);
         if (!data) 

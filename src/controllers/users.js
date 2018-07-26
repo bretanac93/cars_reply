@@ -20,7 +20,29 @@ exports.getById = (req, res) => {
 }
 
 exports.save = (req, res) => {
-    res.send('Not implemented');
+    let {
+        name,
+        gender,
+        age,
+        email,
+        password,
+        preferences
+    } = req.body;
+
+    let user = new User({
+        name,
+        gender,
+        age,
+        email,
+        password,
+        preferences: preferences || {}
+    });
+    user.save((err, data) => {
+        if (err)
+            res.status(400);
+        
+        res.json({ data });
+    })
 }
 
 exports.update = (req, res) => {

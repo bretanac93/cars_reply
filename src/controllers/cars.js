@@ -3,7 +3,7 @@ let Car = require('../models/Car');
 exports.getAll = (req, res) => {
     Car.find((err, data) => {
         if (err)
-            res.status(400);
+            res.status(400).send();
         res.json({ data });
     })
 };
@@ -11,7 +11,7 @@ exports.getAll = (req, res) => {
 exports.getById = (req, res) => {
     Car.findById(req.params.id, (err, data) => {
         if (err)
-            res.status(400);
+            res.status(400).send();
         if (!data) 
             res.status(404).send("Not found");
         
@@ -43,7 +43,7 @@ exports.save = (req, res) => {
 
     car.save((err, data) => {
         if (err)
-            res.status(400);
+            res.status(400).send();
         
         res.json({ data });
     })

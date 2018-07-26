@@ -6,4 +6,5 @@ module.exports = app => {
         .post(usersController.save)
     app.route('/users/:id')
         .get(usersController.getById)
+        .delete(usersController.delete)
 };

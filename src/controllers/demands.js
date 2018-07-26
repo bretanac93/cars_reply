@@ -3,7 +3,7 @@ let Demand = require('../models/Demand');
 exports.getAll = (req, res) => {
     Demand.find((err, data) => {
         if (err)
-            res.status(400);
+            res.status(400).send();
         res.json({ data });
     })
 };
@@ -11,7 +11,7 @@ exports.getAll = (req, res) => {
 exports.getById = (req, res) => {
     Demand.findById(req.params.id, (err, data) => {
         if (err)
-            res.status(400);
+            res.status(400).send();
         if (!data) 
             res.status(404).send("Not found");
         
@@ -41,7 +41,7 @@ exports.save = (req, res) => {
 
     demand.save((err, data) => {
         if (err)
-            res.status(400);
+            res.status(400).send();
         
         res.json({ data });
     })
